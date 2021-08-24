@@ -2,15 +2,17 @@
 void compare_values(int x, int y){ 
     if(x > y)
         printf("%i is greater than %i \n", x, y);
-    else
+    else if(x < y)
         printf("%i is not greater than %i \n",x,y);
+    else
+    printf("%i is equal to %i\n", x, y);
 
 }
 int main() {
     int x, y;
 
-    x = 22;
-    y = 27;
+    x = 2222;
+    y = 223;
 // gitt verdi til 2 heltall 
 // main - funksjoner: der programmet starter fra.
 compare_values(x, y);

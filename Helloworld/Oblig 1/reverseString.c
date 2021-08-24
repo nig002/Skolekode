@@ -6,7 +6,6 @@ void reverseString(char string[])
     int Arraysize = strlen(string);
     for (int i = Arraysize - 1; i >= Arraysize/2; i--)
     {
-        printf("%s %d %d\n", string, i, Arraysize - i - 1);
     char temp=string[i];
     string[i] = string[Arraysize - i - 1];
     string[Arraysize - i - 1] = temp;
@@ -15,7 +14,9 @@ void reverseString(char string[])
 }
 int main()
 {
-    char Array[] = "ABBA";
-    reverseString(Array);
-    printf(Array);  
+    printf("What sentence/word would you like to reverse?\n\n");
+        char Array[100];
+        fgets(Array, sizeof Array, stdin);
+        reverseString(Array);
+        printf(Array);
 }
