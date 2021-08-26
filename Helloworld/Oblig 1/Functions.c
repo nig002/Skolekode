@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 
-void compare_values(int x, int y)
+    void
+    compare_values(int x, int y)
 {
     if (x > y)
-        printf("%i is greater than %i \n\n", x, y);
+        printf("%i is greater than %i \n\n", x, y); // verdiene man kaller på "%i", bestemmer rekkefølgen etter komma. Den først %i vil være x.
     else if (x < y)
         printf("%i is not greater than %i \n\n", x, y);
     else
@@ -12,9 +14,9 @@ void compare_values(int x, int y)
 
 void myTriangles(int numlines)
 {
-    for (int i = 1; i <= numlines; i++)
+    for (int i = 1; i <= numlines; i++) //velger hvor mange linjer nedover trekanten skal gå
     {
-        for (int j = 1; j <= i; j++)
+        for (int j = 1; j <= i; j++) //Her velges hvor langt bortover den skal gå per ''i'' linje
         {
             printf("* ");
         }
@@ -25,7 +27,7 @@ void myTriangles(int numlines)
 
 int myPrimeFactor(int number, int primeFactor)
 {
-    if (number % primeFactor == 0)
+    if (number % primeFactor == 0) //kjører modulo, som viser om det er rest eller ikke.
     {
         return 1;
     }
@@ -58,14 +60,14 @@ void myNumbers(int startnum, int endnum) //deklarerer funksjon med 2 argumenter
     } //if funksjon som bruker ''myPrimeFactor'' for å si om 5 er primfaktor, derreter for å se om det er par/oddetall
 }
 
-int myLog2(unsigned int n)
+int myLog2(unsigned int n) //unsigned betyr at verdien ikke kan være negativ
 {
-    if (n == 0)
+    if (n == 0) //Hvis man putter inn 0, så får man 0.
         return 0;
 
     int msb;
-    n >>= 1;
-    for (msb = 0; n != 0; msb++)
+    n >>= 1;                     //<< eller >> betyr flytting på bitverdi.
+    for (msb = 0; n != 0; msb++) //her sier jeg at hver gang n ikke er null så flyttes den et hakk til høyre på bitverdien. Den teller dette og sier hvor mange ganger den ble flyttet til høyre som da tilsier MSB
     {
         n >>= 1;
     }
@@ -74,13 +76,12 @@ int myLog2(unsigned int n)
 
 void reverseString(char string[])
 {
-
-    int Arraysize = strlen(string);
-    for (int i = Arraysize - 1; i >= Arraysize / 2; i--)
-    {
-        char temp = string[i];
-        string[i] = string[Arraysize - i - 1];
-        string[Arraysize - i - 1] = temp;
+    int Arraysize = strlen(string);                      //kjører "strlen" får å lese lengden på stringen.
+    for (int i = Arraysize - 1; i >= Arraysize / 2; i--) //arraysize er lengden på stringen din, men den har en "nullterminator" som er på siste indeks. Derfor er int i = arraysize -1
+    {                                                    //derretter så kjører det så lenge i er større eller lik arraysize/2. Hvis den er det så går i-1 gjennom
+        char temp = string[i];                           //her setter jeg at temp er = string[i], altså array verdien.
+        string[i] = string[Arraysize - i - 1];     //lagre verdi "char temp", så flytter jeg string i til = "string[Arraysize - i - 1]". Altså vi setter indeksen til en annen indeks posisjon
+        string[Arraysize - i - 1] = temp;          // så flytter vi den andre indeksverdien til der string i var.
     }
 }
 
@@ -145,11 +146,10 @@ int main()
             printf("What sentence/word would you like to reverse?\n\n");
             char temp;
             scanf("%c", &temp); //cleaner buffer, funnet på nett. Hadde problemer med SPACE i stringen.
-            char Array[100];
+            char Array[100];    //setter en "lengde" som array kan bruke
             scanf("%[^\n]", Array);
             reverseString(Array);
-            printf("%s\n\n",Array);
-            
+            printf("%s\n\n", Array);
         }
 
         if (n >= 7)
